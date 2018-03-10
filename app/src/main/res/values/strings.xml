@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Patient satisfaction</string>
+    <string name="action_settings">Settings</string>
+</resources>
