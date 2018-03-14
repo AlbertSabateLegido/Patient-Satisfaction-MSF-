@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Patient-Satisfaction-MSF-.iml" filepath="$PROJECT_DIR$/Patient-Satisfaction-MSF-.iml" />
       <module fileurl="file://$PROJECT_DIR$/Patientsatisfaction.iml" filepath="$PROJECT_DIR$/Patientsatisfaction.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

@@ -5,15 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="frontieres.sans.medecins.patientsatisfaction.MainActivityFragment"
+    tools:layout_editor_absoluteY="73dp"
     tools:showIn="@layout/activity_main">
 
     <TextView
+        android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="75dp"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bFirstAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="@dimen/margin_twoButtons"
+        android:layout_marginLeft="@dimen/margin_twoButtons"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+        android:text="Yes"/>
+
+    <Button
+        android:id="@+id/bSecondAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_marginEnd="@dimen/margin_twoButtons"
+        android:layout_marginRight="@dimen/margin_twoButtons"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bFirstAswer"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="No"/>
 
 </android.support.constraint.ConstraintLayout>
