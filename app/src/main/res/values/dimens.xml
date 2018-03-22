@@ -1,3 +1,5 @@
 <resources>
-    <dimen name="margin_twoButtons">100dp</dimen>
+    <dimen name="margin_betweenButtons">50dp</dimen>
+    <dimen name="halfMargin_betweenButtons">25dp</dimen>
+    <dimen name="quarterMargin_betweenButtons">12.5dp</dimen>
 </resources>

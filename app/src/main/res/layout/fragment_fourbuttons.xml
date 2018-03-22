@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:id="@+id/bSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/bFirstAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bSpace"
+        android:layout_toLeftOf="@+id/bSpace"
+        android:layout_marginRight="@dimen/halfMargin_betweenButtons"
+        android:layout_marginBottom="@dimen/quarterMargin_betweenButtons"
+        android:background="@drawable/button_style"
+        android:text="Option 1" />
+
+    <Button
+        android:id="@+id/bSecondAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bSpace"
+        android:layout_toRightOf="@+id/bSpace"
+        android:layout_marginLeft="@dimen/halfMargin_betweenButtons"
+        android:layout_marginBottom="@dimen/quarterMargin_betweenButtons"
+        android:background="@drawable/button_style"
+        android:text="Option 2" />
+
+    <Button
+        android:id="@+id/bThirdAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bSpace"
+        android:layout_toLeftOf="@+id/bSpace"
+        android:layout_marginRight="@dimen/halfMargin_betweenButtons"
+        android:layout_marginTop="@dimen/quarterMargin_betweenButtons"
+        android:background="@drawable/button_style"
+        android:text="Option 3" />
+
+    <Button
+        android:id="@+id/bFourthAswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bSpace"
+        android:layout_toRightOf="@+id/bSpace"
+        android:layout_marginLeft="@dimen/halfMargin_betweenButtons"
+        android:layout_marginTop="@dimen/quarterMargin_betweenButtons"
+        android:background="@drawable/button_style"
+        android:text="Option 4" />
+
+</RelativeLayout>
