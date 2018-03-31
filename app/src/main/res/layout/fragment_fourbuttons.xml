@@ -11,7 +11,7 @@
         android:layout_centerInParent="true" />
 
     <Button
-        android:id="@+id/bFirstAswer"
+        android:id="@+id/bFirstAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bSpace"
@@ -22,7 +22,7 @@
         android:text="Option 1" />
 
     <Button
-        android:id="@+id/bSecondAswer"
+        android:id="@+id/bSecondAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bSpace"
@@ -33,7 +33,7 @@
         android:text="Option 2" />
 
     <Button
-        android:id="@+id/bThirdAswer"
+        android:id="@+id/bThirdAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bSpace"
@@ -44,7 +44,7 @@
         android:text="Option 3" />
 
     <Button
-        android:id="@+id/bFourthAswer"
+        android:id="@+id/bFourthAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bSpace"

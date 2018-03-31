@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/bSecondAswer"
+        android:id="@+id/bSecondAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -13,21 +13,21 @@
         android:text="Maybe" />
 
     <Button
-        android:id="@+id/bFirstAswer"
+        android:id="@+id/bFirstAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/bSecondAswer"
+        android:layout_toLeftOf="@id/bSecondAnswer"
         android:layout_marginRight="@dimen/margin_betweenButtons"
         android:background="@drawable/button_style"
         android:text="Yes" />
 
     <Button
-        android:id="@+id/bThirdAswer"
+        android:id="@+id/bThirdAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/bSecondAswer"
+        android:layout_toRightOf="@id/bSecondAnswer"
         android:layout_marginLeft="@dimen/margin_betweenButtons"
         android:background="@drawable/button_style"
         android:text="No" />
