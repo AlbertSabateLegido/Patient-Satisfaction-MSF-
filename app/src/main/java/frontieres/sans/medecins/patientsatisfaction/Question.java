@@ -29,4 +29,8 @@ public class Question {
     public String[] getAnswersText() {
         return aText;
     }
+
+    public Integer[] getNextId() {
+        return nextId;
+    }
 }

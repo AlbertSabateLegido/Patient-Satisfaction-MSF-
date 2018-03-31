@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MyFragment extends Fragment {
 
@@ -47,13 +46,25 @@ public class MyFragment extends Fragment {
         if(QuestionManager.getCurrentQuestionType() != QuestionManager.EMOTICONS) {
             String[] answers = QuestionManager.getCurrentQuestionAnswers();
             Button bFirstAnswer = v.findViewById(R.id.bFirstAnswer);
-            if(answers.length >= 0 && bFirstAnswer != null) bFirstAnswer.setText(answers[0]);
+            if(answers.length >= 0 && bFirstAnswer != null) {
+                bFirstAnswer.setText(answers[0]);
+                bFirstAnswer.setOnClickListener((View.OnClickListener) getActivity());
+            }
             Button bSecondAnswer = v.findViewById(R.id.bSecondAnswer);
-            if(answers.length >= 1 && bSecondAnswer != null) bSecondAnswer.setText(answers[1]);
+            if(answers.length >= 1 && bSecondAnswer != null){
+                bSecondAnswer.setText(answers[1]);
+                bSecondAnswer.setOnClickListener((View.OnClickListener) getActivity());
+            }
             Button bThirdAnswer = v.findViewById(R.id.bThirdAnswer);
-            if(answers.length >= 2 && bThirdAnswer != null) bThirdAnswer.setText(answers[2]);
+            if(answers.length >= 2 && bThirdAnswer != null) {
+                bThirdAnswer.setText(answers[2]);
+                bThirdAnswer.setOnClickListener((View.OnClickListener) getActivity());
+            }
             Button bFourthAnswer = v.findViewById(R.id.bFourthAnswer);
-            if(answers.length >= 3 && bFourthAnswer != null) bFourthAnswer.setText(answers[3]);
+            if(answers.length >= 3 && bFourthAnswer != null) {
+                bFourthAnswer.setText(answers[3]);
+                bFourthAnswer.setOnClickListener((View.OnClickListener) getActivity());
+            }
         }
     }
 }
