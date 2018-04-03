@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showQuestion();
     }
 
+
     public void showQuestion() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -66,5 +67,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return answers[3];
         }
         return null;
+    }
+
+    private void restartQuestionary() {
+        QuestionManager.restartQuestionary();
+        showQuestion();
+    }
+
+    @Override
+    public void onBackPressed() {
+        restartQuestionary();
     }
 }

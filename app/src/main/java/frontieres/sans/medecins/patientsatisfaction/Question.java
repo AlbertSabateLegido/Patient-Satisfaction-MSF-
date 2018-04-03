@@ -1,7 +1,5 @@
 package frontieres.sans.medecins.patientsatisfaction;
 
-import java.util.ArrayList;
-
 public class Question {
 
     Integer    id;

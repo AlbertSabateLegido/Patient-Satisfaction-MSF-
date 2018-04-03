@@ -8,14 +8,16 @@ public class QuestionManager {
 
     static List<Question> questionList;
     static Integer currentIdQuestion;
+    static List<String> answeredQuestions;
 
     public static String EMOTICONS     = "emoticons";
     public static String TWO_BUTTONS   = "two_buttons";
     public static String THREE_BUTTONS = "three_buttons";
     public static String FOUR_BUTTONS  = "four_buttons";
 
-    static void createQuestions() {
-        questionList = new ArrayList<Question>();
+    public static void createQuestions() {
+        questionList = new ArrayList<>();
+        answeredQuestions = new ArrayList<>();
         String  question;
         String[] answers;
 
@@ -35,19 +37,22 @@ public class QuestionManager {
         currentIdQuestion = 0;
     }
 
-    static String getCurrentQuestionType() {
+    public static String getCurrentQuestionType() {
         return questionList.get(currentIdQuestion).getQuestionType();
     }
 
-    static String getCurrentQuestionText() {
+    public static String getCurrentQuestionText() {
         return questionList.get(currentIdQuestion).getQuestionText();
     }
 
-    static String[] getCurrentQuestionAnswers() {
+    public static String[] getCurrentQuestionAnswers() {
         return questionList.get(currentIdQuestion).getAnswersText();
     }
 
-    static void nextQuestion(String answer) {
+    public static void nextQuestion(String answer) {
+        answeredQuestions.add(questionList.get(currentIdQuestion).getQuestionText());
+        answeredQuestions.add(answer);
+
         Integer[] nextId = questionList.get(currentIdQuestion).getNextId();
         if(nextId == null) {
             currentIdQuestion = null;
@@ -60,5 +65,14 @@ public class QuestionManager {
                 return;
             }
         }
+    }
+
+    public static void restartQuestionary() {
+        currentIdQuestion = 0;
+        answeredQuestions = new ArrayList<>();
+    }
+
+    public static List<String> getAnsweredQuestions() {
+        return answeredQuestions;
     }
 }

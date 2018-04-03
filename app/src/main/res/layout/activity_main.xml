@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/question"
         android:layout_margin="8dp"
-        android:text="question"
         android:textSize="22sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
