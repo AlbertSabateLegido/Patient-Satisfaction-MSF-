@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Bundle bundle = new Bundle();
         bundle.putString("QuestionType", QuestionManager.getCurrentQuestionType());
-        MyFragment fragment = new MyFragment();
+        MainFragment fragment = new MainFragment();
         fragment.setArguments(bundle);
         ft.replace(R.id.container, fragment);
         ft.addToBackStack(null);
