@@ -5,15 +5,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import frontieres.sans.medecins.patientsatisfaction.Backend.database;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    database DataBase;
+    int i = 1 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        DataBase = new database(this);
         QuestionManager.createQuestions();
 
         showQuestion();
@@ -49,7 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         String answer = getAnswer(view);
-        //guardar resposta a la bd
+        boolean bd_execute = DataBase.insertData(i,i,answer) ;
+        if (bd_execute ) Toast.makeText(this, "bd excute good", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this,"there is aproblem" , Toast.LENGTH_SHORT).show() ;
+        i++ ;
         QuestionManager.nextQuestion(answer);
         showQuestion();
     }
