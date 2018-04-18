@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseHelper;
 import frontieres.sans.medecins.patientsatisfaction.Backend.database;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     database DataBase;
-    int i = 1 ;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         String answer = getAnswer(view);
-        boolean bd_execute = DataBase.insertData(i,i,answer) ;
-        if (bd_execute ) Toast.makeText(this, "bd excute good", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this,"there is aproblem" , Toast.LENGTH_SHORT).show() ;
-        i++ ;
+        boolean bd_execute  =  DataBase.insertData1(0,18,"ans") ;
+
+
+        if (bd_execute == false ) Toast.makeText(this, "here is a problem" , Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this,"goood"  , Toast.LENGTH_SHORT).show() ;
         QuestionManager.nextQuestion(answer);
         showQuestion();
     }
