@@ -30,4 +30,6 @@ public class PATIENT {
       }
         return true ;
     }
+    public String Get_Text_Answer (int i)  {return Pateint_Answers.get(i).Get_AnswerTtext() ;}
+    public int Get_Id_Answer (int i)  {return Pateint_Answers.get(i).Get_AnswerID() ;}
 }

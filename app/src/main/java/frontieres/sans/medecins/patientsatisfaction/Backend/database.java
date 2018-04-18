@@ -71,8 +71,8 @@ public class database extends SQLiteOpenHelper {
        int count = cursor.getCount();
        if (count == 0) return 0 ;
        cursor.moveToFirst() ;
-       int an = cursor.getInt( cursor.getColumnIndex(col1_ID_PATIENT));
-       return  an ;
+       int Last_Patient = cursor.getInt( cursor.getColumnIndex(col1_ID_PATIENT));
+       return  Last_Patient + 1 ;
    }
 
 public boolean delete (int n) {
