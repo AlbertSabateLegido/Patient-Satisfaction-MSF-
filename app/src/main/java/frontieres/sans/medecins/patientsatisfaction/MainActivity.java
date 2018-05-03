@@ -7,16 +7,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseHelper;
+import com.hsalf.smilerating.SmileRating;
+
 import frontieres.sans.medecins.patientsatisfaction.Backend.database;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,SmileRating.OnRatingSelectedListener{
 
     database DataBase;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showQuestion();
     }
 
-
     public void showQuestion() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
 
         if(QuestionManager.currentIdQuestion == null){
             ft.replace(R.id.container,new EndFragment());
@@ -45,26 +41,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Bundle bundle = new Bundle();
         bundle.putString("QuestionType", QuestionManager.getCurrentQuestionType());
+
         MainFragment fragment = new MainFragment();
         fragment.setArguments(bundle);
+
         ft.replace(R.id.container, fragment);
         ft.addToBackStack(null);
         ft.commit();
 
         TextView tvQuestion = findViewById(R.id.question);
         tvQuestion.setText(QuestionManager.getCurrentQuestionText());
-    }
-
-    @Override
-    public void onClick(View view) {
-        String answer = getAnswer(view);
-        boolean bd_execute  =  DataBase.insertData1(0,18,"ans") ;
-
-
-        if (bd_execute == false ) Toast.makeText(this, "here is a problem" , Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this,"goood"  , Toast.LENGTH_SHORT).show() ;
-        QuestionManager.nextQuestion(answer);
-        showQuestion();
     }
 
     private String getAnswer(View view) {
@@ -90,5 +76,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         restartQuestionary();
+    }
+
+    @Override
+    public void onClick(View view) {
+        String answer = getAnswer(view);
+        boolean bd_execute  =  DataBase.insertData1(0,18,"ans") ;
+
+        if (bd_execute == false ) Toast.makeText(this, "here is a problem" , Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this,"goood"  , Toast.LENGTH_SHORT).show() ;
+
+        QuestionManager.nextQuestion(answer);
+        showQuestion();
+    }
+
+    @Override
+    public void onRatingSelected(int level, boolean reselected) {
+        QuestionManager.nextQuestion(Integer.toString(level));
+        showQuestion();
     }
 }

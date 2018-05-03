@@ -10,7 +10,8 @@ public class QuestionManager {
     static Integer currentIdQuestion;
     static List<String> answeredQuestions;
 
-    public static String EMOTICONS     = "emoticons";
+    //public static String SMILEY        = "smiley";
+    public static String SMILEY_RATING = "smiley_rating";
     public static String TWO_BUTTONS   = "two_buttons";
     public static String THREE_BUTTONS = "three_buttons";
     public static String FOUR_BUTTONS  = "four_buttons";
@@ -27,8 +28,7 @@ public class QuestionManager {
         questionList.add(new Question(0, TWO_BUTTONS,question,answers, new Integer[] {1,2}));
 
         question = "Are you satisfied";
-        answers = new String[] {"Absolutly","Not at all","No"};
-        questionList.add(new Question(1,THREE_BUTTONS,question,answers,null));
+        questionList.add(new Question(1,SMILEY_RATING,question,null,null));
 
         question = "What is your specialty";
         answers = new String[] {"surgery","oculist","traumatologist","dermatologist"};
@@ -53,9 +53,16 @@ public class QuestionManager {
         answeredQuestions.add(questionList.get(currentIdQuestion).getQuestionText());
         answeredQuestions.add(answer);
 
+        System.out.println("Question: " + questionList.get(currentIdQuestion).getQuestionText() +
+            "\nAnswer: " + answer);
+
         Integer[] nextId = questionList.get(currentIdQuestion).getNextId();
         if(nextId == null) {
             currentIdQuestion = null;
+            return;
+        }
+        if(nextId.length == 1) {
+            currentIdQuestion = nextId[0];
             return;
         }
         String[] answers = questionList.get(currentIdQuestion).getAnswersText();
