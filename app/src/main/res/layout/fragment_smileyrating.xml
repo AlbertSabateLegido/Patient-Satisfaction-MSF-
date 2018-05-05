@@ -5,10 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Space
+        android:id="@+id/bSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
     <com.hsalf.smilerating.SmileRating
         android:id="@+id/smile_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true" />
+        android:layout_below="@id/bSpace"/>
 
 </RelativeLayout>

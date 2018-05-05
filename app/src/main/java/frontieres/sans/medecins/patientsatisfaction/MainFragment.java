@@ -20,19 +20,19 @@ public class MainFragment extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null) {
             String qType = bundle.getString("QuestionType");
-            if (qType.equals(QuestionManager.SMILEY_RATING)) {
+            if (qType.equals(SurveyManager.SMILEY_RATING)) {
                 layout = R.layout.fragment_smileyrating;
                 return;
             }
-            if (qType.equals(QuestionManager.TWO_BUTTONS)) {
+            if (qType.equals(SurveyManager.TWO_BUTTONS)) {
                 layout = R.layout.fragment_twobuttons;
                 return;
             }
-            if (qType.equals(QuestionManager.THREE_BUTTONS)) {
+            if (qType.equals(SurveyManager.THREE_BUTTONS)) {
                 layout = R.layout.fragment_threebuttons;
                 return;
             }
-            if (qType.equals(QuestionManager.FOUR_BUTTONS)) {
+            if (qType.equals(SurveyManager.FOUR_BUTTONS)) {
                 layout = R.layout.fragment_fourbuttons;
                 return;
             }
@@ -50,8 +50,7 @@ public class MainFragment extends Fragment {
     }
 
     private void showAnswers(View v) {
-        //if(QuestionManager.getCurrentQuestionType() == QuestionManager.SMILEY)        return;
-        if(QuestionManager.getCurrentQuestionType() == QuestionManager.SMILEY_RATING) {
+        if(SurveyManager.getCurrentQuestionType() == SurveyManager.SMILEY_RATING) {
             SmileRating smileRating = v.findViewById(R.id.smile_rating);
             smileRating.setOnRatingSelectedListener((SmileRating.OnRatingSelectedListener) getActivity());
             smileRating.setSelectedSmile(2);
@@ -59,7 +58,7 @@ public class MainFragment extends Fragment {
             return;
         }
 
-        String[] answers = QuestionManager.getCurrentQuestionAnswers();
+        String[] answers = SurveyManager.getCurrentQuestionAnswers();
         Button bFirstAnswer = v.findViewById(R.id.bFirstAnswer);
         if(answers.length >= 0 && bFirstAnswer != null) {
             bFirstAnswer.setText(answers[0]);

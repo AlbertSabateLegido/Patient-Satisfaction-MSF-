@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class QuestionManager {
+public class SurveyManager {
 
+    static List<String> survey;
     static List<Question> questionList;
     static Integer currentIdQuestion;
-    static List<String> answeredQuestions;
 
     //public static String SMILEY        = "smiley";
     public static String SMILEY_RATING = "smiley_rating";
@@ -18,7 +18,7 @@ public class QuestionManager {
 
     public static void createQuestions() {
         questionList = new ArrayList<>();
-        answeredQuestions = new ArrayList<>();
+        survey = new ArrayList<>();
         String  question;
         String[] answers;
 
@@ -50,11 +50,8 @@ public class QuestionManager {
     }
 
     public static void nextQuestion(String answer) {
-        answeredQuestions.add(questionList.get(currentIdQuestion).getQuestionText());
-        answeredQuestions.add(answer);
-
-        System.out.println("Question: " + questionList.get(currentIdQuestion).getQuestionText() +
-            "\nAnswer: " + answer);
+        survey.add(questionList.get(currentIdQuestion).getQuestionText());
+        survey.add(answer);
 
         Integer[] nextId = questionList.get(currentIdQuestion).getNextId();
         if(nextId == null) {
@@ -76,10 +73,10 @@ public class QuestionManager {
 
     public static void restartQuestionary() {
         currentIdQuestion = 0;
-        answeredQuestions = new ArrayList<>();
+        survey = new ArrayList<>();
     }
 
-    public static List<String> getAnsweredQuestions() {
-        return answeredQuestions;
+    public static List<String> getSurvey() {
+        return survey;
     }
 }

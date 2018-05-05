@@ -17,7 +17,7 @@ public class EndFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        List<String> answeredQuestions = QuestionManager.getAnsweredQuestions();
+        List<String> answeredQuestions = SurveyManager.getSurvey();
         for(int i = 0; i+1 < answeredQuestions.size(); i = i+2) {
             System.out.println(answeredQuestions.get(i) + ": " + answeredQuestions.get(i+1) );
         }

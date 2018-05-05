@@ -5,23 +5,23 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hsalf.smilerating.SmileRating;
 
-import frontieres.sans.medecins.patientsatisfaction.Backend.database;
+import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseManager;
+import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseManagerImpl;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,SmileRating.OnRatingSelectedListener{
 
-    database DataBase;
+    DatabaseManager databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DataBase = new database(this);
-        QuestionManager.createQuestions();
+        databaseManager = new DatabaseManagerImpl(this);
+        SurveyManager.createQuestions();
 
         showQuestion();
     }
@@ -29,18 +29,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showQuestion() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        if(QuestionManager.currentIdQuestion == null){
+        if(SurveyManager.currentIdQuestion == null){
             ft.replace(R.id.container,new EndFragment());
             ft.commit();
 
             TextView tvQuestion = findViewById(R.id.question);
             tvQuestion.setText("Thanks");
 
+            databaseManager.storeSurvey(SurveyManager.getSurvey());
+
             return;
         }
 
         Bundle bundle = new Bundle();
-        bundle.putString("QuestionType", QuestionManager.getCurrentQuestionType());
+        bundle.putString("QuestionType", SurveyManager.getCurrentQuestionType());
 
         MainFragment fragment = new MainFragment();
         fragment.setArguments(bundle);
@@ -50,11 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ft.commit();
 
         TextView tvQuestion = findViewById(R.id.question);
-        tvQuestion.setText(QuestionManager.getCurrentQuestionText());
+        tvQuestion.setText(SurveyManager.getCurrentQuestionText());
     }
 
     private String getAnswer(View view) {
-        String[] answers = QuestionManager.getCurrentQuestionAnswers();
+        String[] answers = SurveyManager.getCurrentQuestionAnswers();
         switch (view.getId()) {
             case R.id.bFirstAnswer:
                 return answers[0];
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void restartQuestionary() {
-        QuestionManager.restartQuestionary();
+        SurveyManager.restartQuestionary();
         showQuestion();
     }
 
@@ -81,18 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         String answer = getAnswer(view);
-        boolean bd_execute  =  DataBase.insertData1(0,18,"ans") ;
-
-        if (bd_execute == false ) Toast.makeText(this, "here is a problem" , Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this,"goood"  , Toast.LENGTH_SHORT).show() ;
-
-        QuestionManager.nextQuestion(answer);
+        SurveyManager.nextQuestion(answer);
         showQuestion();
     }
 
     @Override
     public void onRatingSelected(int level, boolean reselected) {
-        QuestionManager.nextQuestion(Integer.toString(level));
+        SurveyManager.nextQuestion(Integer.toString(level));
         showQuestion();
     }
 }
