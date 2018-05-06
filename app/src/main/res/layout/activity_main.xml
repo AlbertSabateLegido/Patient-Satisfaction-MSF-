@@ -21,7 +21,7 @@
         android:layout_margin="8dp"
         android:text="Question"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="@dimen/textview_font_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

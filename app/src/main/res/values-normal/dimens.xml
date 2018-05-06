@@ -1,4 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="textview_font_size">16sp</dimen>
+    <dimen name="button_font_size">14sp</dimen>
+
+
     <dimen name="margin_betweenButtons">50dp</dimen>
     <dimen name="halfMargin_betweenButtons">25dp</dimen>
     <dimen name="quarterMargin_betweenButtons">12.5dp</dimen>

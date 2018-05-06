@@ -55,6 +55,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvQuestion.setText(SurveyManager.getCurrentQuestionText());
     }
 
+    @Override
+    public void onBackPressed() {
+        restartQuestionary();
+    }
+
+    @Override
+    public void onClick(View view) {
+        String answer = getAnswer(view);
+        SurveyManager.nextQuestion(answer);
+        showQuestion();
+    }
+
+    @Override
+    public void onRatingSelected(int level, boolean reselected) {
+        SurveyManager.nextQuestion(Integer.toString(level));
+        showQuestion();
+    }
+
     private String getAnswer(View view) {
         String[] answers = SurveyManager.getCurrentQuestionAnswers();
         switch (view.getId()) {
@@ -72,24 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void restartQuestionary() {
         SurveyManager.restartQuestionary();
-        showQuestion();
-    }
-
-    @Override
-    public void onBackPressed() {
-        restartQuestionary();
-    }
-
-    @Override
-    public void onClick(View view) {
-        String answer = getAnswer(view);
-        SurveyManager.nextQuestion(answer);
-        showQuestion();
-    }
-
-    @Override
-    public void onRatingSelected(int level, boolean reselected) {
-        SurveyManager.nextQuestion(Integer.toString(level));
         showQuestion();
     }
 }

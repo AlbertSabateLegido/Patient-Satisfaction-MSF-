@@ -1,33 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Space
-        android:id="@+id/bSpace"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_horizontal_0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_horizontal_0.75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_0.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_0.45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_0.55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_0.80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
 
     <Button
         android:id="@+id/bFirstAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bSpace"
-        android:layout_toLeftOf="@+id/bSpace"
-        android:layout_marginRight="@dimen/halfMargin_betweenButtons"
-        android:background="@drawable/button_style"
-        android:text="Yes" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button_shape"
+        android:text="Yes"
+        android:textSize="@dimen/button_font_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_0.75"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_0.45"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_0.2"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_0.5" />
 
     <Button
         android:id="@+id/bSecondAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bSpace"
-        android:layout_toRightOf="@+id/bSpace"
-        android:layout_marginLeft="@dimen/halfMargin_betweenButtons"
-        android:background="@drawable/button_style"
-        android:text="No" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button_shape"
+        android:text="No"
+        android:textSize="@dimen/button_font_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_0.75"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_0.80"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_0.55"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_0.5" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
