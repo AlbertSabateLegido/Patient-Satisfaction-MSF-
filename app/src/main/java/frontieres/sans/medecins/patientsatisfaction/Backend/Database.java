@@ -38,7 +38,6 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {}
 
     public void storeSurvey (List<String> survey) throws NullDatabaseThrowable, InsertRowDatabaseThrowable {
-
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         if (sqLiteDatabase == null) throw new NullDatabaseThrowable();
 
@@ -56,20 +55,20 @@ public class Database extends SQLiteOpenHelper {
         return;
     }
 
-   private int nextSurveyId (){
-       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-       String query =  "SELECT MAX(" + SURVEY_ID + ") as " + SURVEY_ID +
-               " FROM " + TABLE_NAME;
-       Cursor cursor =  sqLiteDatabase.rawQuery(query, null);
-       int count = cursor.getCount();
-       if (count == 0) return 0 ;
-       cursor.moveToFirst() ;
-       int lastSurveyId = cursor.getInt(cursor.getColumnIndex(SURVEY_ID));
-       return  lastSurveyId + 1 ;
-   }
+    private int nextSurveyId (){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query =  "SELECT MAX(" + SURVEY_ID + ") as " + SURVEY_ID +
+                " FROM " + TABLE_NAME;
+        Cursor cursor =  sqLiteDatabase.rawQuery(query, null);
+        int count = cursor.getCount();
+        if (count == 0) return 0 ;
+        cursor.moveToFirst() ;
+        int lastSurveyId = cursor.getInt(cursor.getColumnIndex(SURVEY_ID));
+        return  lastSurveyId + 1 ;
+    }
 
-   public boolean delete (int surveyId) {
-       SQLiteDatabase db = this.getWritableDatabase();
-       return db.delete(TABLE_NAME, SURVEY_ID + '=' + surveyId ,null) > 0 ;
-   }
+    public boolean delete (int surveyId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, SURVEY_ID + '=' + surveyId ,null) > 0 ;
+    }
 }

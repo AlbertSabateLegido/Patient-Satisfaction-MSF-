@@ -2,8 +2,10 @@ package frontieres.sans.medecins.patientsatisfaction.Backend;
 
 import android.content.Context;
 
+import java.io.IOException;
 import java.util.List;
 
+import frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask.GetOrganisationUnitsAsyncTask;
 import frontieres.sans.medecins.patientsatisfaction.Throwables.InsertRowDatabaseThrowable;
 import frontieres.sans.medecins.patientsatisfaction.Throwables.NullDatabaseThrowable;
 
