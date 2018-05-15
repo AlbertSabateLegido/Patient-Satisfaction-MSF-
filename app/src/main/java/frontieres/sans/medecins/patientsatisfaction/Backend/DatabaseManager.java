@@ -1,8 +1,8 @@
 package frontieres.sans.medecins.patientsatisfaction.Backend;
 
-import java.util.List;
+import frontieres.sans.medecins.patientsatisfaction.Survey;
 
 public interface DatabaseManager {
 
-    void storeSurvey(List<String> survey);
+    void storeSurvey(Survey survey);
 }

@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.hsalf.smilerating.SmileRating;
 
+import frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask.GetOrganisationUnitsAsyncTask;
+import frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask.StoreSurveyEventAsyncTask;
 import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseManager;
 import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseManagerImpl;
 
@@ -24,35 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SurveyManager.createQuestions();
 
         showQuestion();
-    }
-
-    public void showQuestion() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-        if(SurveyManager.currentIdQuestion == null){
-            ft.replace(R.id.container,new EndFragment());
-            ft.commit();
-
-            TextView tvQuestion = findViewById(R.id.question);
-            tvQuestion.setText("Thanks");
-
-            databaseManager.storeSurvey(SurveyManager.getSurvey());
-
-            return;
-        }
-
-        Bundle bundle = new Bundle();
-        bundle.putString("QuestionType", SurveyManager.getCurrentQuestionType());
-
-        MainFragment fragment = new MainFragment();
-        fragment.setArguments(bundle);
-
-        ft.replace(R.id.container, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
-
-        TextView tvQuestion = findViewById(R.id.question);
-        tvQuestion.setText(SurveyManager.getCurrentQuestionText());
     }
 
     @Override
@@ -73,6 +46,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showQuestion();
     }
 
+    private void showQuestion() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        if(SurveyManager.currentIdQuestion == null){
+            ft.replace(R.id.container,new EndFragment());
+            ft.commit();
+
+            TextView tvQuestion = findViewById(R.id.question);
+            tvQuestion.setText("Thanks");
+
+            SurveyManager.setSurveyDate();
+
+            databaseManager.storeSurvey(SurveyManager.getSurvey());
+
+            return;
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putString("QuestionType", SurveyManager.getCurrentQuestionType());
+
+        MainFragment fragment = new MainFragment();
+        fragment.setArguments(bundle);
+
+        ft.replace(R.id.container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
+
+        TextView tvQuestion = findViewById(R.id.question);
+        tvQuestion.setText(SurveyManager.getCurrentQuestionText());
+    }
+
     private String getAnswer(View view) {
         String[] answers = SurveyManager.getCurrentQuestionAnswers();
         switch (view.getId()) {
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void restartQuestionary() {
-        SurveyManager.restartQuestionary();
+        SurveyManager.restartSurvey();
         showQuestion();
     }
 }

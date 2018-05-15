@@ -20,13 +20,13 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<String,Void,Map<String,String>>{
+public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,Map<String,String>>{
 
     private String serverUrl = "https://play.dhis2.org/dev";
     private String userpassw = "admin:district";
 
     @Override
-    protected Map<String, String> doInBackground(String... voids) {
+    protected Map<String, String> doInBackground(Void... voids) {
 
         Map<String,String> organisationUnits = new HashMap<>();
 

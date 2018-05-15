@@ -1,14 +1,15 @@
 package frontieres.sans.medecins.patientsatisfaction;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 public class SurveyManager {
 
-    static List<String> survey;
-    static List<Question> questionList;
-    static Integer currentIdQuestion;
+    public static List<Question> questionList;
+    public static Integer currentIdQuestion;
+    public static Survey survey;
 
     //public static String SMILEY        = "smiley";
     public static String SMILEY_RATING = "smiley_rating";
@@ -18,7 +19,9 @@ public class SurveyManager {
 
     public static void createQuestions() {
         questionList = new ArrayList<>();
-        survey = new ArrayList<>();
+        currentIdQuestion = 0;
+        survey = new Survey();
+
         String  question;
         String[] answers;
 
@@ -33,8 +36,6 @@ public class SurveyManager {
         question = "What is your specialty";
         answers = new String[] {"surgery","oculist","traumatologist","dermatologist"};
         questionList.add(new Question(2,FOUR_BUTTONS,question,answers,null));
-
-        currentIdQuestion = 0;
     }
 
     public static String getCurrentQuestionType() {
@@ -50,8 +51,7 @@ public class SurveyManager {
     }
 
     public static void nextQuestion(String answer) {
-        survey.add(questionList.get(currentIdQuestion).getQuestionText());
-        survey.add(answer);
+        survey.add(questionList.get(currentIdQuestion).getQuestionText(), answer);
 
         Integer[] nextId = questionList.get(currentIdQuestion).getNextId();
         if(nextId == null) {
@@ -71,12 +71,17 @@ public class SurveyManager {
         }
     }
 
-    public static void restartQuestionary() {
+    public static void restartSurvey() {
         currentIdQuestion = 0;
-        survey = new ArrayList<>();
+        survey.restartSurvey();
     }
 
-    public static List<String> getSurvey() {
+    public static void setSurveyDate() {
+        survey.setDate(new Date());
+    }
+
+    public static Survey getSurvey() {
         return survey;
     }
+
 }
