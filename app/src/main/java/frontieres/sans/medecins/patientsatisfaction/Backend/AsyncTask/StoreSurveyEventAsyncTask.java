@@ -13,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -28,8 +27,8 @@ public abstract class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, 
     private String orgUnit = "va0QxwJsMxt";
     private String storedBy = "RjfUlTAbAfw";
 
-    private String QuestionDataElement = "dojkLBcssnT";
-    private String AnswerDataElement = "sBUYDC6AYet";
+    private String questionDataElement = "dojkLBcssnT";
+    private String answerDataElement = "sBUYDC6AYet";
 
     @Override
     protected Integer doInBackground(Survey... surveys) {
@@ -62,12 +61,12 @@ public abstract class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, 
                 JSONArray dataElements = new JSONArray();
                 JSONObject dataElement = new JSONObject();
 
-                dataElement.put("dataElement",QuestionDataElement);
+                dataElement.put("dataElement", questionDataElement);
                 dataElement.put("value",answeredQuestions.get(i));
                 dataElements.put(dataElement);
 
                 dataElement = new JSONObject();
-                dataElement.put("dataElement",AnswerDataElement);
+                dataElement.put("dataElement", answerDataElement);
                 dataElement.put("value",answeredQuestions.get(i+1));
                 dataElements.put(dataElement);
 
