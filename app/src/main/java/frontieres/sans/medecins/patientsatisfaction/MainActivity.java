@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         databaseManager = new DatabaseManagerImpl(this);
         SurveyManager.createQuestions();
-
         showQuestion();
     }
 
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tvQuestion.setText("Thanks");
 
             SurveyManager.setSurveyDate();
-
             databaseManager.storeSurvey(SurveyManager.getSurvey());
 
             return;

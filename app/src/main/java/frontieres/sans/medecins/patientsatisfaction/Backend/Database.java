@@ -24,6 +24,8 @@ public class Database extends SQLiteOpenHelper {
     public static final String DATE        = "date";
     public static final String SYNC        = "sync";
 
+    public int Lastsurveyid = 0 ;
+
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
             SURVEY_ID   + " INTEGER," +
             QUESTION    + " TEXT," +
@@ -45,15 +47,22 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {}
 
     public void storeSurvey (Survey survey) throws NullDatabaseThrowable, InsertRowDatabaseThrowable {
+
+
+
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+
+
         if (sqLiteDatabase == null) throw new NullDatabaseThrowable();
 
         List<String> answeredQuestions = survey.getAnsweredQuestions();
-
-
+        if (Lastsurveyid == 0) Lastsurveyid = NexrSurveyId() ;
+        else Lastsurveyid += 1 ;
         for (int i = 0; i+1 < answeredQuestions.size(); i+=2) {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(SURVEY_ID,survey.getSurveyId());
+            contentValues.put(SURVEY_ID,Lastsurveyid);
             contentValues.put(QUESTION,answeredQuestions.get(i));
             contentValues.put(ANSWER,answeredQuestions.get(i+1));
             contentValues.put(DATE,new SimpleDateFormat("yyyy-MM-dd").format(survey.getDate()));
@@ -64,4 +73,20 @@ public class Database extends SQLiteOpenHelper {
 
         return;
     }
+    public int NexrSurveyId (){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery =  "SELECT MAX("+ SURVEY_ID +") as "+ SURVEY_ID +"  FROM " +  TABLE_NAME  ;
+        Cursor cursor =  db.rawQuery(selectQuery, null);
+        int count = cursor.getCount();
+        if (count == 0) return 0 ;
+        cursor.moveToFirst() ;
+        int Last_Patient = cursor.getInt( cursor.getColumnIndex(SURVEY_ID));
+        return  Last_Patient + 1 ;
+    }
+
+    public boolean Reset () {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME , SYNC + '=' + false ,null) > 0 ;
+    }
+
 }
