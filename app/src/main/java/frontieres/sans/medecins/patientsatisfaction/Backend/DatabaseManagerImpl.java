@@ -35,7 +35,7 @@ public class DatabaseManagerImpl implements DatabaseManager {
     private static class MyStoreSurveyEventAsyncTask extends StoreSurveyEventAsyncTask {
 
         @Override
-        protected void onPostExecute(Integer surveyId) {
+        protected void onPostExecute(List<Integer> surveyId) {
 
         }
     }

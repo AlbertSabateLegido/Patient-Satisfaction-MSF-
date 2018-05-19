@@ -23,7 +23,6 @@ import java.util.Map;
 public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,Map<String,String>>{
 
     private String serverUrl = "https://play.dhis2.org/dev";
-    private String userpassw = "admin:district";
 
     @Override
     protected Map<String, String> doInBackground(Void... voids) {
@@ -34,8 +33,7 @@ public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,
             URL url = new URL(serverUrl + "/api/organisationUnits");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            byte[] data = userpassw.getBytes("UTF-8");
-            String base64 = Base64.encodeToString(data, Base64.DEFAULT);
+            String base64 = Authenticator.getAuthentication();
 
             System.out.println("Base64: " + base64);
 
