@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textview_font_size">12sp</dimen>
+    <dimen name="text_view_font_size">13.5sp</dimen>
     <dimen name="button_font_size">10.5sp</dimen>
+
+    <dimen name="patient_sans_frontiers_image_widht"> 60dp</dimen>
+    <dimen name="upc_barcelona_tech_image_width">120dp</dimen>
+    <dimen name="upc_barcelona_tech_image_height">30dp</dimen>
+
+    <dimen name="normal_margin">18.75</dimen>
+    <dimen name="small_margin">9.375dp</dimen>
 </resources>

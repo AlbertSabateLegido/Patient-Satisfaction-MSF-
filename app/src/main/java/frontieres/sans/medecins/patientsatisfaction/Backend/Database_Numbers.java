@@ -1,4 +1,4 @@
-package frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask;
+package frontieres.sans.medecins.patientsatisfaction.Backend;
 
 import android.content.ContentValues;
 import android.content.Context;
