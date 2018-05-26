@@ -1,12 +1,26 @@
 package frontieres.sans.medecins.patientsatisfaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.hsalf.smilerating.SmileRating;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask.GetOrganisationUnitsAsyncTask;
 import frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask.StoreSurveyEventAsyncTask;
@@ -17,6 +31,7 @@ import frontieres.sans.medecins.patientsatisfaction.Backend.DatabaseManagerImpl;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,SmileRating.OnRatingSelectedListener{
 
     DatabaseManager databaseManager;
+    public long startTime ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         databaseManager = new DatabaseManagerImpl(this);
         SurveyManager.createQuestions();
         showQuestion();
+
     }
 
     @Override
@@ -37,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String answer = getAnswer(view);
         SurveyManager.nextQuestion(answer);
         showQuestion();
+        startTime = System.currentTimeMillis();
+
+
     }
 
     @Override
@@ -54,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             TextView tvQuestion = findViewById(R.id.question);
             tvQuestion.setText("Thanks");
+            long difference = System.currentTimeMillis() - startTime;
 
             SurveyManager.setSurveyDate();
             databaseManager.storeSurvey(SurveyManager.getSurvey());
@@ -73,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         TextView tvQuestion = findViewById(R.id.question);
         tvQuestion.setText(SurveyManager.getCurrentQuestionText());
+       databaseManager.num_answers( "patient") ;
     }
 
     private String getAnswer(View view) {
@@ -94,4 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SurveyManager.restartSurvey();
         showQuestion();
     }
+
+    public void grafics () {
+        Intent intent = new Intent(this, GraficsActivity.class);
+        startActivity(intent);
+
+    }
+
 }

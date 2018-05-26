@@ -5,5 +5,5 @@ import frontieres.sans.medecins.patientsatisfaction.Survey;
 public interface DatabaseManager {
 
     void storeSurvey(Survey survey);
-
+ int num_answers(String answer) ;
 }

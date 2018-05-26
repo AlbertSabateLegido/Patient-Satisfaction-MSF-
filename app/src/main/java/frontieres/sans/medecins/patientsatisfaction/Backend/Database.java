@@ -53,8 +53,6 @@ public class Database extends SQLiteOpenHelper {
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
-
-
         if (sqLiteDatabase == null) throw new NullDatabaseThrowable();
 
         List<String> answeredQuestions = survey.getAnsweredQuestions();
@@ -87,6 +85,14 @@ public class Database extends SQLiteOpenHelper {
     public boolean Reset () {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME , SYNC + '=' + false ,null) > 0 ;
+    }
+
+    public int count (String answer) {
+        SQLiteDatabase db = this.getWritableDatabase();
+       // Cursor c = db.rawQuery(" SELECT * FROM" + TABLE_NAME +" WHERE" + ANSWER + "="+answer , null);
+        String[] args = new String[] {answer};
+        Cursor c = db.rawQuery(" SELECT * ,FROM" + TABLE_NAME +"WHERE"+ ANSWER + "=?", args);
+        return c.getCount() ;
     }
 
 }

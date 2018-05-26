@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Patient-Satisfaction-MSF-.iml" filepath="$PROJECT_DIR$/Patient-Satisfaction-MSF-.iml" />
       <module fileurl="file://C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-n\Patient-Satisfaction-MSF-.iml" filepath="C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-n\Patient-Satisfaction-MSF-.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Patient-Satisfaction-MSF-n.iml" filepath="$PROJECT_DIR$/.idea/Patient-Satisfaction-MSF-n.iml" />
+      <module fileurl="file://C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\Patient-Satisfaction-MSF-.iml" filepath="C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\Patient-Satisfaction-MSF-.iml" />
+      <module fileurl="file://C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\.idea\Patient-Satisfaction-MSF-n.iml" filepath="C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\.idea\Patient-Satisfaction-MSF-n.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Patient-Satisfaction-MSF-v.iml" filepath="$PROJECT_DIR$/Patient-Satisfaction-MSF-v.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\app\app.iml" filepath="C:\Users\Home\AndroidStudioProjects\Patient-Satisfaction-MSF-v\app\app.iml" />
     </modules>
   </component>
 </project>

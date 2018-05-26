@@ -22,5 +22,6 @@ public class EndFragment extends Fragment {
             System.out.println(answeredQuestions.get(i) + ": " + answeredQuestions.get(i+1) );
         }
         return inflater.inflate(R.layout.fragment_end, container, false);
+
     }
 }

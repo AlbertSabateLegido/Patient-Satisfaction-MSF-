@@ -14,9 +14,11 @@ public class DatabaseManagerImpl implements DatabaseManager {
     Database database;
     Database_Numbers DatabaseGeneral ;
 
+
     public DatabaseManagerImpl(Context context) {
         database = new Database(context);
         DatabaseGeneral = new Database_Numbers(context) ;
+
     }
 
     @Override
@@ -29,8 +31,13 @@ public class DatabaseManagerImpl implements DatabaseManager {
         } catch (InsertRowDatabaseThrowable insertRowDatabaseThrowable) {
             insertRowDatabaseThrowable.printStackTrace();
         }
+        DatabaseGeneral.SurveyCompleted (5.5);
     }
 
+   public int num_answers(String answer) {
+
+        return database.count ("patient") ;
+    }
 
     private static class MyStoreSurveyEventAsyncTask extends StoreSurveyEventAsyncTask {
 
