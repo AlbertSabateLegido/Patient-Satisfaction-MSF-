@@ -89,9 +89,12 @@ public class Database extends SQLiteOpenHelper {
 
     public int count (String answer) {
         SQLiteDatabase db = this.getWritableDatabase();
-       // Cursor c = db.rawQuery(" SELECT * FROM" + TABLE_NAME +" WHERE" + ANSWER + "="+answer , null);
         String[] args = new String[] {answer};
-        Cursor c = db.rawQuery(" SELECT * ,FROM" + TABLE_NAME +"WHERE"+ ANSWER + "=?", args);
+        String queryString =
+                "SELECT " + ANSWER + " FROM "+ TABLE_NAME +
+                " WHERE " + ANSWER + " = ? " ;
+
+        Cursor c = db.rawQuery(queryString, args);
         return c.getCount() ;
     }
 

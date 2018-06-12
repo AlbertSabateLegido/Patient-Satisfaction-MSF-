@@ -97,12 +97,12 @@ public class Database_Numbers extends SQLiteOpenHelper {
 
     public void SurveyCompleted (double time) {
         SQLiteDatabase db = this.getWritableDatabase();
-      //  db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
        // db.execSQL(CREATE_SENTIX);
         ContentValues nums = new ContentValues() ;
        survey_complited = survey_complited + 1 ;
         nums.put(TOTAL_PATIENTS,survey_total);
-   //   nums.put(AVETIME ,time);
+    // nums.put(AVETIME ,time);
         nums.put(PATIENTS_COMPLETED,survey_complited);
         db.update(TABLE_NAME , nums , TOTAL_PATIENTS + " = "+survey_total, null) ;
     }

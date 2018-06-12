@@ -31,7 +31,7 @@ public class DatabaseManagerImpl implements DatabaseManager {
         } catch (InsertRowDatabaseThrowable insertRowDatabaseThrowable) {
             insertRowDatabaseThrowable.printStackTrace();
         }
-        DatabaseGeneral.SurveyCompleted (5.5);
+        DatabaseGeneral.SurveyCompleted (5);
     }
 
    public int num_answers(String answer) {

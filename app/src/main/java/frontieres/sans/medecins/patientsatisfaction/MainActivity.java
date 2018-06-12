@@ -74,10 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             TextView tvQuestion = findViewById(R.id.question);
             tvQuestion.setText("Thanks");
             long difference = System.currentTimeMillis() - startTime;
+          //  databaseManager.SurveyCompleted (difference) ;
 
             SurveyManager.setSurveyDate();
             databaseManager.storeSurvey(SurveyManager.getSurvey());
-
+            int u = databaseManager.num_answers( "patient") ;
             return;
         }
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         TextView tvQuestion = findViewById(R.id.question);
         tvQuestion.setText(SurveyManager.getCurrentQuestionText());
-       databaseManager.num_answers( "patient") ;
+
     }
 
     private String getAnswer(View view) {
@@ -120,6 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, GraficsActivity.class);
         startActivity(intent);
 
-    }
+   }
 
 }
