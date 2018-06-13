@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         String answer = getAnswer(view);
-        SurveyManager.nextQuestion(answer);
-        showQuestion();
+        grafics() ;
+       // SurveyManager.nextQuestion(answer);
+      //  showQuestion();
         startTime = System.currentTimeMillis();
 
 
