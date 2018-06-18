@@ -12,12 +12,12 @@ import frontieres.sans.medecins.patientsatisfaction.Throwables.NullDatabaseThrow
 public class DatabaseManagerImpl implements DatabaseManager {
 
     Database database;
-    Database_Numbers DatabaseGeneral ;
+    Database_Numbers database_numbers;
 
 
     public DatabaseManagerImpl(Context context) {
         database = new Database(context);
-        DatabaseGeneral = new Database_Numbers(context) ;
+        database_numbers = new Database_Numbers(context) ;
 
     }
 
@@ -25,25 +25,36 @@ public class DatabaseManagerImpl implements DatabaseManager {
     public void storeSurvey(Survey survey) {
         try {
             database.storeSurvey(survey);
-            new MyStoreSurveyEventAsyncTask().execute(survey);
+            new StoreSurveyEventAsyncTask().execute(survey);
         } catch (NullDatabaseThrowable nullDatabaseThrowable) {
             nullDatabaseThrowable.printStackTrace();
         } catch (InsertRowDatabaseThrowable insertRowDatabaseThrowable) {
             insertRowDatabaseThrowable.printStackTrace();
         }
-        DatabaseGeneral.SurveyCompleted (5);
+        database_numbers.SurveyCompleted (5);
     }
 
-   public int num_answers(String answer) {
-
+    public int num_answers(String answer) {
         return database.count ("patient") ;
     }
 
-    private static class MyStoreSurveyEventAsyncTask extends StoreSurveyEventAsyncTask {
+    @Override
+    public List<String> getUserInformation() {
+        return database_numbers.getUserInformation();
+    }
 
-        @Override
-        protected void onPostExecute(List<Integer> surveyId) {
+    @Override
+    public void storeUserInformation(String serverURL, String username, String password) {
+        database_numbers.storeUserInformation(serverURL,username,password);
+    }
 
-        }
+    @Override
+    public void storeOrganisationUnit(String organisationUnit) {
+        database_numbers.storeOrganisationUnit(organisationUnit);
+    }
+
+    @Override
+    public void storeId(String id) {
+        database_numbers.storeId(id);
     }
 }

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/bSecondAnswer"
         android:layout_toLeftOf="@id/bSecondAnswer"
-        android:layout_marginRight="@dimen/margin_betweenButtons"
+        android:layout_marginRight="@dimen/large_margin"
         android:background="@drawable/button_shape"
         android:text="Yes" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/bSecondAnswer"
         android:layout_toRightOf="@id/bSecondAnswer"
-        android:layout_marginLeft="@dimen/margin_betweenButtons"
+        android:layout_marginLeft="@dimen/large_margin"
         android:background="@drawable/button_shape"
         android:text="No" />
 

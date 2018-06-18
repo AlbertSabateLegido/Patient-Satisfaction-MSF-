@@ -1,7 +1,6 @@
 package frontieres.sans.medecins.patientsatisfaction.Backend.AsyncTask;
 
 import android.os.AsyncTask;
-import android.util.Base64;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,15 +21,13 @@ import java.util.Map;
 
 public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,Map<String,String>>{
 
-    private String serverUrl = "https://play.dhis2.org/dev";
-
     @Override
     protected Map<String, String> doInBackground(Void... voids) {
 
         Map<String,String> organisationUnits = new HashMap<>();
 
         try {
-            URL url = new URL(serverUrl + "/api/organisationUnits");
+            URL url = new URL(Authenticator.getServerUrl() + "/api/organisationUnits");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             String base64 = Authenticator.getAuthentication();
@@ -57,8 +54,8 @@ public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,
 
                 for(int i = 0; i < bodyArray.length(); ++i) {
                     JSONObject organisationUnit = bodyArray.getJSONObject(i);
-                    organisationUnits.put(organisationUnit.getString("id"),
-                            organisationUnit.getString("displayName"));
+                    organisationUnits.put(organisationUnit.getString("displayName"),
+                            organisationUnit.getString("id"));
                 }
 
                 while (pagerObject.has("nextPage")) {
@@ -82,8 +79,8 @@ public abstract class GetOrganisationUnitsAsyncTask extends AsyncTask<Void,Void,
 
                     for(int i = 0; i < bodyArray.length(); ++i) {
                         JSONObject organisationUnit = bodyArray.getJSONObject(i);
-                        organisationUnits.put(organisationUnit.getString("id"),
-                                organisationUnit.getString("displayName"));
+                        organisationUnits.put(organisationUnit.getString("displayName"),
+                                organisationUnit.getString("id"));
                     }
                 }
 

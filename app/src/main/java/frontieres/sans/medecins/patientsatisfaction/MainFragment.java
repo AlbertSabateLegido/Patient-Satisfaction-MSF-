@@ -54,7 +54,6 @@ public class MainFragment extends Fragment {
             SmileRating smileRating = v.findViewById(R.id.smile_rating);
             smileRating.setOnRatingSelectedListener((SmileRating.OnRatingSelectedListener) getActivity());
             smileRating.setSelectedSmile(2);
-            System.out.println("OnRatingSelectedListener assigned");
             return;
         }
 

@@ -51,6 +51,7 @@ public class SurveyManager {
     }
 
     public static void nextQuestion(String answer) {
+        if(currentIdQuestion == null) return;
         survey.add(questionList.get(currentIdQuestion).getQuestionText(), answer);
 
         Integer[] nextId = questionList.get(currentIdQuestion).getNextId();

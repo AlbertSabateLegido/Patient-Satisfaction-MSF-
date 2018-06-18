@@ -13,19 +13,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import frontieres.sans.medecins.patientsatisfaction.Survey;
 
-public abstract class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, List<Integer>> {
-
-    private String serverUrl = "http://7b3b0e65.ngrok.io";
-    private String userpassw = "admin:district";
+public class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, List<Integer>> {
 
     private String program = "NWilOXg9fNG";
-    private String orgUnit = "va0QxwJsMxt";
     private String storedBy = "RjfUlTAbAfw";
 
     private String questionDataElement = "dojkLBcssnT";
@@ -37,7 +34,7 @@ public abstract class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, 
         List<Integer> storedSurveyIds = new ArrayList<>();
 
         try {
-            URL url = new URL(serverUrl + "/api/events");
+            URL url = new URL(Authenticator.getServerUrl() + "/api/events");
             String base64 = Authenticator.getAuthentication();
 
             for(Survey survey:surveys) {
@@ -54,7 +51,7 @@ public abstract class StoreSurveyEventAsyncTask extends AsyncTask<Survey, Void, 
                 for (int i = 0; i + 1 < answeredQuestions.size(); i += 2) {
                     JSONObject event = new JSONObject();
                     event.put("program", program);
-                    event.put("orgUnit", orgUnit);
+                    event.put("orgUnit", Authenticator.getOrganisationUnit());
                     event.put("eventDate", "2018-05-15");
                     event.put("status", "COMPLETED");
                     event.put("storedBy", storedBy);

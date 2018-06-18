@@ -48,9 +48,6 @@ public class Database extends SQLiteOpenHelper {
 
     public void storeSurvey (Survey survey) throws NullDatabaseThrowable, InsertRowDatabaseThrowable {
 
-
-
-
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         if (sqLiteDatabase == null) throw new NullDatabaseThrowable();
@@ -71,6 +68,7 @@ public class Database extends SQLiteOpenHelper {
 
         return;
     }
+
     public int NexrSurveyId (){
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery =  "SELECT MAX("+ SURVEY_ID +") as "+ SURVEY_ID +"  FROM " +  TABLE_NAME  ;

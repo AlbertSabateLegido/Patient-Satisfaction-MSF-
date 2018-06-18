@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         String answer = getAnswer(view);
-        grafics() ;
-       // SurveyManager.nextQuestion(answer);
-      //  showQuestion();
+        //grafics() ;
+        SurveyManager.nextQuestion(answer);
+        showQuestion();
         startTime = System.currentTimeMillis();
 
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return null;
     }
 
-    private void restartQuestionary() {
+    public void restartQuestionary() {
         SurveyManager.restartSurvey();
         showQuestion();
     }
