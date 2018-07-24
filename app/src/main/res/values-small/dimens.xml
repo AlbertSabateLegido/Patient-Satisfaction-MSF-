@@ -7,6 +7,9 @@
     <dimen name="upc_barcelona_tech_image_width">120dp</dimen>
     <dimen name="upc_barcelona_tech_image_height">30dp</dimen>
 
+    <dimen name="large_margin">37.5dp</dimen>
     <dimen name="normal_margin">18.75</dimen>
     <dimen name="small_margin">9.375dp</dimen>
+
+    <dimen name="edit_text_weight">168.75dp</dimen>
 </resources>

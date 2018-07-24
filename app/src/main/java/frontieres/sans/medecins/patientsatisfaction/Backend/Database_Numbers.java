@@ -62,8 +62,8 @@ public class Database_Numbers extends SQLiteOpenHelper {
         }
         */
     }
-    @Override
 
+    @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_SENTIX);
         db.execSQL(CREATE_TABLE_USER_INFORMATION);
